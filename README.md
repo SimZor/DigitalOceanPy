@@ -8,8 +8,8 @@ This API wrapper is currently in development, but should be finished shortly. Do
 
 ## Useful Links
 
-[SimZor Studios](https://simzorstudios.com "SimZor Studios Website")
-[Digital Ocean RESTful API Docs](https://developers.digitalocean.com/documentation/v2/ "DigitalOcean API Documentation")
+- [SimZor Studios](https://simzorstudios.com "SimZor Studios Website")
+- [Digital Ocean RESTful API Docs](https://developers.digitalocean.com/documentation/v2/ "DigitalOcean API Documentation")
 
 ## Requirements
 
