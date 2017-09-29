@@ -3,7 +3,7 @@ import requests
 
 class DigitalOceanAPI:
     token = ""
-    endpoint = "https://api.digitalocean.com/v2/"
+    endpoint = "https://api.digitalocean.com/v2/" + '/'
     headers = {'Authorization': token,
                'Content-Type': 'application/json'}
 
@@ -14,28 +14,59 @@ class DigitalOceanAPI:
         """
         self.token = token
 
-    def get(self, endpoint_extension):
+    def get(self, endpoint_extension, payload):
         """
         Method for the GET request type
 
         :param endpoint_extension: endpoint extension for the api call to make (i.e. /account)
-        :return: response in form of JSON
-        """
-        url = self.endpoint + '/' + endpoint_extension
+        :param payload:
 
-        response = requests.get(url,
+        :type endpoint_extension:
+        :type payload:
+
+        :return: response in form of JSON
+        :rtype:
+        """
+        self.endpoint += endpoint_extension
+
+        response = requests.get(self.endpoint,
+                                params=payload)
+
+        response = requests.get(response.url,
                                 headers=self.headers)
 
-        return response.text
+        return response
 
-    def delete(self):
-        return ""
+    def delete(self, endpoint_extension, payload):
+        self.endpoint += endpoint_extension
+
+        response = requests.delete(self.endpoint,
+                                   params=payload)
+
+        response = requests.delete(response.url,
+                                   headers=self.headers)
 
     def put(self):
         return ""
 
-    def post(self):
-        return ""
+    def post(self, endpoint_extension, payload):
+        """
+
+        :param endpoint_extension:
+        :param payload:
+
+        :return:
+        :rtype:
+        """
+
+        self.endpoint += endpoint_extension
+
+        response = requests.post(self.endpoint,
+                                 headers=self.headers,
+                                 data=payload)
+
+        response.json()
+        return response.text
 
     def head(self):
         return ""
